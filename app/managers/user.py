@@ -1,3 +1,4 @@
+## SQL and Static Method  Users
 from asyncpg import UniqueViolationError
 from fastapi import HTTPException
 from passlib.context import CryptContext

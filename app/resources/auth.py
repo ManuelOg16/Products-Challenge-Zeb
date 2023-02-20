@@ -1,3 +1,4 @@
+## View Authorization
 from fastapi import APIRouter
 
 from app.managers.user import UserManager

@@ -1,3 +1,4 @@
+## View Count Request
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
 
@@ -11,6 +12,7 @@ import traceback
 
 router = APIRouter(tags=["Count-Products"])
 
+## Validation Super Admin or Admins
 def is_adm_or_super():
     if is_super_admin == is_super_admin:
         adm_or_sup = is_super_admin

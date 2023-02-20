@@ -1,3 +1,4 @@
+## View Product
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
 
@@ -21,6 +22,7 @@ router = APIRouter(tags=["Products"])
 counter_lock = asyncio.Lock()
 counter = 0
 
+## Function Validation Super Admin or Admins
 def is_adm_or_super():
     if is_super_admin == is_super_admin:
         adm_or_sup = is_super_admin
@@ -28,6 +30,7 @@ def is_adm_or_super():
         adm_or_sup= is_admin
     return adm_or_sup
 
+## Function number of times when consulting a product
 async def count_product_id(user_name, product_name):
         global counter
         async with counter_lock:
@@ -40,7 +43,7 @@ async def count_product_id(user_name, product_name):
                 }
         await CountRequestManager.create_count_request(count_request_data)
 
-
+## Function for send emails for admins
 async def  send_emails_n(product_dict, get_product):
         list_admin = []
         users = await UserManager.get_users()

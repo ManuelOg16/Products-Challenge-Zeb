@@ -1,3 +1,4 @@
+## SQL and Static Method Product
 from app.db.database import database
 from app.models import product
 

@@ -1,3 +1,4 @@
+## SQL and Static Method Catalogue
 from app.db.database import database
 from app.models import catalogue
 

@@ -203,3 +203,12 @@ Consumir la API REST desde la web por ejemplo:
     http://127.0.0.1:8008/docs#/
 
 ```
+
+## Propuesta de diseño de arquitectura
+
+\_El diseño de arquitectura que se propone es el siguiente:
+
+1. Como se puede llegar a tener demasiada volumetría de productos y catálogos, esto puede afectar el performance de los componentes en donde este alojado el Back end suponiendo que este en una Cloud Run de Google Cloud Platform , lo cual podría causar time out demasiado largos e interrumpir el proceso masivo de creación de catálogos y productos.
+2. Lo anterior se podría solucionar de varias maneras, pero propongo lo siguiente: la arquitectura que implementaría seria la siguiente, seguimos teniendo la Cloud Run en el cual estará alojado el Back end , debido a que el Cloud Run puede auto escalar de manera automática si el proceso lo demanda y de esta manera tener flexibilidad, pero para la creación masiva de catálogos y productos se implementaría un Dataflow el cual se podría alimentar de la información de manera estática a través de archivos planos o tipo Batch en línea , de esta manera todo el procesamiento de la data se realizaría a través de Dataflow el cual es un componente especializado para transformación de datos a grandes volúmenes y no se afectaría el rendimiento de performance de la Cloud Run.\_
+
+![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/ManuelOg16/Products-Challenge-Zeb/master/assets/Diseño-Arquitectura.jpg)

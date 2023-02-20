@@ -1,3 +1,4 @@
+## View Catalogue
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
 
@@ -14,6 +15,7 @@ import traceback
 
 router = APIRouter(tags=["Catalogs"])
 
+## Validation Super Admin or Admins
 def is_adm_or_super():
     if is_super_admin == is_super_admin:
         adm_or_sup = is_super_admin
