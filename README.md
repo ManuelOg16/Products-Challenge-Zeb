@@ -1,41 +1,31 @@
-# BIENVENIDOS AL BACKEND DE ADMINISTRACIÓN DE PRODUCTOS
+# Welcome to the Product Administration Backend
 
-_Este proyecto tiene como objetivo crear, actualizar, borrar y consultar catalogos los cuales tienen asociados productos._
+_This project aims to create, update, delete and query catalogs which have associated products_.
 
-_La lógica de negocio es la siguiente: Primero se debe crear un SUPER ADMINISTRADOR este tiene todos los privilegios en
-la API REST utilizando el CRUD, además puede cambiar el Rol de los USUARIOS ANÓNIMOS, después que se registran los cuales por
-defecto son USUARIOS ANÓNIMOS, el SUPER ADMINISTRADOR puede cambiar el rol de estos a un perfil de ADMINISTRADORES y también
-pueden eliminar a los USUARIOS ANÓNIMOS y a los ADMINISTRADORES registrados, por otro lado, los ADMINISTRADORES
-tienen todos los privilegios del CRUD excepto que no pueden eliminar al SUPER ADMINISTRADOR , consultar todos los usuarios, ni tampoco eliminar a los usuarios,
-si los ADMINISTRADORES o el SUPER ADMINISTRADOR actualizan cualquier producto, se le notificara al correo electrónico de cada uno de ellos
-con el cual se registraron, y se notificara el cambio registrado.
-Los USUARIOS ANÓNIMOS registrados pueden consultar todos los catálogos, los productos y cada uno de los productos, cuando se consulta
-un producto en específico se guardara la información de la cantidad de veces que consulto el producto con el nombre de este y el nombre
-de usuario que realizo la acción, los USUARIOS ANÓNIMOS no pueden actualizar, borrar y crear catálogos, productos y usuarios.
-Para finalizar el PUBLICO EN GENERAL que no se registre en la API REST puede consultar todos los catálogos y todos los productos solamente_.
+_The business logic is as follows: First, a SUPER ADMINISTRATOR must be created, who has all privileges in the API REST using the CRUD, and can also change the Role of ANONYMOUS USERS, after they are registered, which by default are ANONYMOUS USERS, the SUPER ADMINISTRATOR can change the role of these to an ADMINISTRATOR profile and can also delete the registered ANONYMOUS USERS and ADMINISTRATORS, on the other hand, the ADMINISTRATORS have all the privileges of the CRUD except they cannot delete the SUPER ADMINISTRATOR, query all users, or delete users, if the ADMINISTRATORS or the SUPER ADMINISTRATOR update any product, an email will be sent to each of them with which they registered and the change registered will be notified.
+Registered ANONYMOUS USERS can query all catalogs, products and each of the products, when a specific product is consulted, the information of the number of times that the product was consulted with the name of the product and the name of the user who made the action will be saved, ANONYMOUS USERS cannot update,Anonymous users can not update, delete and create catalogs, products and users.
+Finally, the general public who does not register in the REST API can only consult all catalogs and all products_.
 
-_Nota: Para todos los usuarios registrados incluyendo el SUPER ADMINISTRADOR , deben logearse y el token generado lo deben ingresar en el candado
-de autorización, de esta manera tendra todas las funcionalidades de la API REST de acuerdo al perfil_.
+_Note: For all registered users including the SUPER ADMINISTRATOR, they must log in and the generated token must be entered in the authorization lock, in this way they will have all the functionalities of the REST API according to the profile_.
 
 ![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/ManuelOg16/Products-Challenge-Zeb/master/assets/Ingresar-token.png)
 ![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/ManuelOg16/Products-Challenge-Zeb/master/assets/token.png)
 
-\_Restricciones:
-Primero se deben crear los catálogos y luego los productos para cada catálogo, si se intenta crear un producto sin un catalogo id valido la API REST expondrá un mensaje de error personalizado.
+_Restrictions:
+First the catalogs must be created and then the products for each catalog, if an attempt is made to create a product without a valid catalog ID the REST API will expose a personalized error message_.
 
-Segundo no se pueden crear catálogos, usuarios y productos ya existentes, de lo contrario la API REST expondrá un mensaje de error personalizado\_.
+Second, you cannot create catalogs, users and products that already exist, otherwise the REST API will expose a custom error message\_.
 
-## Opción 1 Instalación en tu máquina local 🔧
+## Option 1 Installation on your local machine 🔧
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos
-de desarrollo y pruebas._
+_These instructions will get you a copy of the project up and running on your local machine for development and testing purposes_.
 
-### Ambiente Virtual
+### Virtual Environment
 
-Desde la raiz del proyecto se crea el ambiente virtual de la siguiente manera:
+From the root of the project, the virtual environment is created as follows:
 
 ```
----cd folder del proyecto
+---cd project folder
 
 ---Configurar un ambiente virtual con el comando:
 
