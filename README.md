@@ -35,10 +35,10 @@ From the root of the project, the virtual environment is created as follows:
       virtualenv -p /usr/bin/python3.8 venv
 ```
 
-### Activar el Ambiente Virtual
+### Activate Virtual Environment
 
 ```
----comandos:
+---commands:
 
   ##Windows c/s path:
       venv\Scripts\Activate
@@ -46,29 +46,29 @@ From the root of the project, the virtual environment is created as follows:
       source venv/bin/activate
 ```
 
-### Instalar las Librerias
+### Install Libraries
 
 ```
----comandos:
+---commands:
 
     pip install -r requirements.txt
 
 ```
 
-### Base de Datos
+### Database
 
-Se crea la base de datos en PostgreSQL con el siguiente nombre:
+The database is created in PostgreSQL with the following name:
 
 ```
 products
 
 ```
 
-### Variables de Entorno
+### Environment Variables
 
-#Crear el archivo .env en la raiz del proyecto
+#Create the .env file in the root of the project
 
-#Para este proyecto se cuenta con las siguientes variables de entorno:
+#For this project we have the following environment variables:
 
 ```
 # CONFIG PROJECT
@@ -81,37 +81,36 @@ MAIL_PORT=587
 MAIL_SERVER=smtp.gmail.com
 MAIN_FROM_NAME =Update fields Products
 
-# CONFIG BASE DE DATOS
+# CONFIG DATABASE
 
 DATABASE_URL='postgresql://user:password@localhost:5432/products'
 
 ```
 
-NOTA: El password de 16 digitos se habilita en la cuenta del correo electronico con la autenticación de dos pasos,
-y luego se genera el password de 16 digitos para permitir que la API pueda enviar correos electrónicos.
+NOTE: The 16-digit password is enabled on the email account with two-step authentication, and then the 16-digit password is generated to allow the API to send emails..
 
-### Run del proyecto
+### Run project
 
 ```
-##Con el ambiente virtual activo ejecutar el siguiente comando:
+##With the virtual environment active, execute the following command:
 
     uvicorn app.main:app --reload
 
 ```
 
-### Ingresar a la Web:
+### Enter the website:
 
-Consumir la API REST desde la web por ejemplo:
+Consume the REST API from the web for example:
 
 ```
     http://127.0.0.1:8000/docs#/
 
 ```
 
-### Crear el SUPER ADMINISTRADOR
+### Create the SUPER ADMINISTRATOR
 
 ```
----crear el super administrador por primera vez por linea de comandos desde la raiz del proyecto:
+---create the super administrator for the first time by command line from the root of the project:
 
     ## Windows
       set  PYTHONPATH=./
@@ -123,13 +122,13 @@ Consumir la API REST desde la web por ejemplo:
 
 ```
 
-## Opción 2 Ejecución del DOCKER 🔧
+## Option 2 Running the DOCKER 🔧
 
-### Variables de Entorno
+### Environment Variables
 
-#Crear el archivo .env en la raiz del proyecto
+#Create the .env file in the root of the project
 
-#Para este proyecto se cuenta con las siguientes variables de entorno:
+#For this project we have the following environment variables:
 
 ```
 # CONFIG PROJECT
@@ -145,39 +144,38 @@ DATABASE_URL='postgresql://user:password@localhost:5432/products'
 
 ```
 
-NOTA: La base de datos usuario y password se crean de manera automatica cuando se ejecute el docker compose, agregar las variables que considere en
-DATABASE_URL para su base de datos.
+NOTE: The user and password database are automatically created when the docker compose is executed, add the variables you consider in DATABASE_URL for your database.
 
-### Generar las Imagenes y Correr Los Contenedores
+### Generate the Images and Run the Containers
 
-Desde la raiz del proyecto ejecutar el siguiente comando:
+From the root of the project run the following command:
 
 ```
 docker-compose up -d --build
 
 ```
 
-### Comprobar el Funcionamiento de los Contenedores
+### Check the Operation of the Containers
 
-comando:
+command:
 
 ```
 docker-compose logs -f
 
 ```
 
-Si No hay errores
+If there are no errors
 
-### Crear el SUPER ADMINISTRADOR desde el bash del contenedor de nuestra API
+### Create the SUPER ADMINISTRATOR from the bash of our API container
 
-comando:
+command:
 
 ```
 Docker exec -it products-challenge-zeb-web-1 bash
 
 ```
 
-En el bash ejecutar los comando:
+In bash execute the command:
 
 ```
    export PYTHONPATH=./
@@ -185,20 +183,20 @@ En el bash ejecutar los comando:
 
 ```
 
-### Ingresar a la Web:
+### Enter the website:
 
-Consumir la API REST desde la web por ejemplo:
+Consume the REST API from the web for example:
 
 ```
     http://127.0.0.1:8008/docs#/
 
 ```
 
-## Propuesta de diseño de arquitectura
+## Proposed Architecture Design
 
-\_El diseño de arquitectura que se propone es el siguiente:
+\_The architecture design proposed is as follows:
 
-1. Como se puede llegar a tener demasiada volumetría de productos y catálogos, esto puede afectar el performance de los componentes en donde este alojado el Back end suponiendo que este en una Cloud Run de Google Cloud Platform , lo cual podría causar time out demasiado largos e interrumpir el proceso masivo de creación de catálogos y productos.
-2. Lo anterior se podría solucionar de varias maneras, pero propongo lo siguiente: la arquitectura que implementaría seria la siguiente, seguimos teniendo la Cloud Run en el cual estará alojado el Back end , debido a que el Cloud Run puede auto escalar de manera automática si el proceso lo demanda y de esta manera tener flexibilidad, pero para la creación masiva de catálogos y productos se implementaría un Dataflow el cual se podría alimentar de la información de manera estática a través de archivos planos o tipo Batch en línea , de esta manera todo el procesamiento de la data se realizaría a través de Dataflow el cual es un componente especializado para transformación de datos a grandes volúmenes y no se afectaría el rendimiento de performance de la Cloud Run.\_
+1. As there could be too much product and catalogue volume, this could affect the performance of the components where the Back end is hosted assuming it is on a Google Cloud Platform Cloud Run, which could cause too long time outs and interrupt the massive catalogue and product creation process.
+2. The above could be solved in various ways, but I propose the following: the architecture to be implemented would be the following, we still have the Cloud Run in which the Back end will be hosted, due to the fact that the Cloud Run can auto-scale automatically if the process demands it and thus have flexibility, but for the massive creation of catalogues and products a Dataflow would be implemented which could be fed with the information in a static way through flat files or Batch type online, thus all the data processing would be carried out through Dataflow which is a component specialized in data transformation to large volumes and the performance performance of the Cloud Run would not be affected.\_
 
 ![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/ManuelOg16/Products-Challenge-Zeb/master/assets/Diseño-Arquitectura.jpg)
